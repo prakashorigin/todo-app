@@ -41,13 +41,13 @@ const TodoItem: React.FC<TodoItemProps> = ({
 
   return (
     <div
-      className={`p-4 border border-gray-200 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-800 hover:shadow-md transition ${
+      className={`p-6 border border-gray-200 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-800 hover:shadow-lg transition ${
         todo.completed ? "opacity-70 bg-gray-50 dark:bg-gray-900" : ""
       }`}
     >
-      <div className="flex items-start justify-between gap-4">
+      <div className="flex items-start justify-between gap-6">
         {/* Left side - Checkbox and content */}
-        <div className="flex items-start gap-3 flex-1 min-w-0">
+        <div className="flex items-start gap-4 flex-1 min-w-0">
           <input
             type="checkbox"
             checked={todo.completed}
@@ -81,7 +81,7 @@ const TodoItem: React.FC<TodoItemProps> = ({
             )}
 
             {/* Metadata row */}
-            <div className="flex flex-wrap gap-2 mt-3">
+            <div className="flex flex-wrap gap-3 mt-4">
               {/* Priority badge */}
               <span
                 className={`text-xs font-medium px-2.5 py-1 rounded-full border ${getPriorityColor(

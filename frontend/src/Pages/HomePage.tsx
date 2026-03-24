@@ -189,7 +189,7 @@ export default function HomePage() {
       <Navbar />
 
       {/* Main Content Area */}
-      <div className="flex flex-1 overflow-hidden">
+      <div className="flex flex-1 overflow-hidden gap-0">
         {/* Sidebar */}
         <Sidebar
           activeView={activeView}
@@ -200,13 +200,13 @@ export default function HomePage() {
         {/* Main Content */}
         <div className="flex-1 flex flex-col overflow-hidden">
           {/* Header */}
-          <div className="bg-white dark:bg-gray-800 border-b dark:border-gray-700 shadow-sm p-6">
-            <div className="flex items-center justify-between mb-6">
+          <div className="bg-white dark:bg-gray-800 border-b dark:border-gray-700 shadow-sm p-8">
+            <div className="flex items-center justify-between mb-8">
               <div>
-                <h2 className="text-4xl font-bold text-gray-800 dark:text-white">
+                <h2 className="text-5xl font-bold text-gray-900 dark:text-white">
                   {getViewTitle()}
                 </h2>
-                <p className="text-gray-500 dark:text-gray-400 text-sm mt-1">
+                <p className="text-gray-600 dark:text-gray-400 text-base mt-2">
                   {filteredTodos.length} of {todos.length} tasks
                 </p>
               </div>
@@ -222,17 +222,19 @@ export default function HomePage() {
             </div>
 
             {/* Search & Filters */}
-            <SearchFilter
-              onSearch={setSearch}
-              onFilterPriority={setPriorityFilter}
-              onFilterCategory={setCategoryFilter}
-              onSort={setSort}
-              totalTodos={todos.length}
-            />
+            <div className="mt-6 pt-6 border-t border-gray-200 dark:border-gray-700">
+              <SearchFilter
+                onSearch={setSearch}
+                onFilterPriority={setPriorityFilter}
+                onFilterCategory={setCategoryFilter}
+                onSort={setSort}
+                totalTodos={todos.length}
+              />
+            </div>
           </div>
 
           {/* Tasks List */}
-          <div className="flex-1 overflow-y-auto p-6">
+          <div className="flex-1 overflow-y-auto p-8">
             {loading ? (
               <div className="flex items-center justify-center h-full">
                 <div className="text-center">
@@ -243,7 +245,7 @@ export default function HomePage() {
                 </div>
               </div>
             ) : filteredTodos.length > 0 ? (
-              <div className="space-y-3 max-w-5xl">
+              <div className="space-y-4 max-w-6xl">
                 {filteredTodos.map((todo) => (
                   <TodoItem
                     key={todo._id}
