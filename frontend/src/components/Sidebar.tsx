@@ -85,47 +85,33 @@ export default function Sidebar({
   ];
 
   return (
-    <div className="w-64 bg-white shadow-lg h-screen flex flex-col border-r">
-      {/* Header */}
-      <div className="p-6 border-b">
-        <div className="flex items-center gap-2 mb-4">
-          <span className="text-3xl">📋</span>
-          <h1 className="text-2xl font-bold text-gray-800">MyTodo</h1>
-        </div>
-        <button
-          onClick={() => navigate("/profile")}
-          className="w-full px-3 py-2 text-sm bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition"
-        >
-          Profile
-        </button>
-      </div>
-
-      {/* Main Menu */}
-      <nav className="flex-1 overflow-y-auto p-4">
-        <div className="space-y-1 mb-6">
-          {menuItems.map((item) => (
-            <button
-              key={item.id}
-              onClick={() => onViewChange(item.id)}
-              className={`w-full text-left px-4 py-2 rounded-lg flex items-center gap-3 transition ${
-                activeView === item.id
-                  ? "bg-blue-100 text-blue-600 font-semibold"
-                  : "text-gray-700 hover:bg-gray-100"
-              }`}
-            >
-              <span className="text-xl">{item.icon}</span>
-              <span>{item.label}</span>
-            </button>
-          ))}
-        </div>
+    <div className="w-64 bg-white dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700 h-screen flex flex-col">
+      {/* Menu Items */}
+      <nav className="flex-1 overflow-y-auto p-4 space-y-2">
+        {menuItems.map((item) => (
+          <button
+            key={item.id}
+            onClick={() => onViewChange(item.id)}
+            className={`w-full text-left px-4 py-3 rounded-lg flex items-center gap-3 transition font-medium ${
+              activeView === item.id
+                ? "bg-blue-50 dark:bg-blue-900 text-blue-600 dark:text-blue-400"
+                : "text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700"
+            }`}
+          >
+            <span className="text-xl">{item.icon}</span>
+            <span className="text-sm">{item.label}</span>
+          </button>
+        ))}
 
         {/* Projects Section */}
-        <div className="border-t pt-4">
+        <div className="pt-4 mt-4 border-t border-gray-200 dark:border-gray-700">
           <div className="flex items-center justify-between px-4 mb-3">
-            <h3 className="font-semibold text-gray-700 text-sm">MY PROJECTS</h3>
+            <h3 className="font-semibold text-gray-700 dark:text-gray-300 text-xs uppercase tracking-wide">
+              Projects
+            </h3>
             <button
               onClick={() => setShowNewProject(!showNewProject)}
-              className="text-gray-500 hover:text-gray-700 text-lg"
+              className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 text-xl hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg p-1 transition"
             >
               +
             </button>
@@ -139,19 +125,20 @@ export default function Sidebar({
                 placeholder="Project name..."
                 value={newProjectName}
                 onChange={(e) => setNewProjectName(e.target.value)}
-                className="w-full px-2 py-1 border rounded text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                 onKeyPress={(e) => e.key === "Enter" && handleCreateProject()}
+                autoFocus
               />
               <div className="flex gap-2">
                 <button
                   onClick={handleCreateProject}
-                  className="flex-1 px-2 py-1 bg-blue-500 text-white text-xs rounded hover:bg-blue-600"
+                  className="flex-1 px-3 py-1 bg-blue-500 text-white text-xs rounded-lg hover:bg-blue-600 transition font-medium"
                 >
                   Create
                 </button>
                 <button
                   onClick={() => setShowNewProject(false)}
-                  className="flex-1 px-2 py-1 bg-gray-300 text-gray-700 text-xs rounded hover:bg-gray-400"
+                  className="flex-1 px-3 py-1 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 text-xs rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600 transition"
                 >
                   Cancel
                 </button>
@@ -161,43 +148,43 @@ export default function Sidebar({
 
           {/* Projects List */}
           <div className="space-y-1">
-            {projects.map((project) => (
-              <div
-                key={project._id}
-                className="flex items-center gap-2 px-4 py-2 rounded-lg hover:bg-gray-100 group"
-              >
-                <span className="text-lg">{project.icon}</span>
-                <button
-                  onClick={() => onProjectSelect?.(project._id)}
-                  className={`flex-1 text-left text-sm ${
+            {projects.length > 0 ? (
+              projects.map((project) => (
+                <div
+                  key={project._id}
+                  className={`flex items-center gap-2 px-4 py-2 rounded-lg group transition ${
                     activeView === project._id
-                      ? "text-blue-600 font-semibold"
-                      : "text-gray-700"
+                      ? "bg-blue-50 dark:bg-blue-900"
+                      : "hover:bg-gray-50 dark:hover:bg-gray-700"
                   }`}
                 >
-                  {project.name}
-                </button>
-                <button
-                  onClick={() => handleDeleteProject(project._id)}
-                  className="opacity-0 group-hover:opacity-100 text-red-500 hover:text-red-700 text-sm transition"
-                >
-                  ✕
-                </button>
-              </div>
-            ))}
+                  <span className="text-lg">{project.icon}</span>
+                  <button
+                    onClick={() => onProjectSelect?.(project._id)}
+                    className={`flex-1 text-left text-sm transition ${
+                      activeView === project._id
+                        ? "text-blue-600 dark:text-blue-400 font-semibold"
+                        : "text-gray-700 dark:text-gray-300"
+                    }`}
+                  >
+                    {project.name}
+                  </button>
+                  <button
+                    onClick={() => handleDeleteProject(project._id)}
+                    className="opacity-0 group-hover:opacity-100 text-gray-400 hover:text-red-500 text-sm transition"
+                  >
+                    ✕
+                  </button>
+                </div>
+              ))
+            ) : (
+              <p className="text-xs text-gray-500 dark:text-gray-400 px-4 py-2">
+                No projects yet
+              </p>
+            )}
           </div>
         </div>
       </nav>
-
-      {/* Footer */}
-      <div className="border-t p-4 space-y-2">
-        <button
-          onClick={handleLogout}
-          className="w-full px-3 py-2 text-sm bg-red-500 text-white rounded-lg hover:bg-red-600 transition"
-        >
-          Logout
-        </button>
-      </div>
     </div>
   );
 }

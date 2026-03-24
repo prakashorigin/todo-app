@@ -26,48 +26,61 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="bg-gradient-to-r from-blue-600 to-blue-500 text-white shadow-lg dark:from-blue-800 dark:to-blue-700">
-      {/* Top Row: Logo and Title */}
-      <div className="flex items-center justify-between p-3 border-b border-white border-opacity-20">
-        <h1
-          className="text-2xl font-bold cursor-pointer hover:text-blue-100 transition flex items-center gap-2"
+    <nav className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 shadow-sm sticky top-0 z-50">
+      <div className="flex items-center justify-between px-6 py-4 max-w-7xl mx-auto">
+        
+        {/* Left: Logo and Title */}
+        <div 
+          className="flex items-center gap-3 cursor-pointer hover:opacity-80 transition"
           onClick={() => navigate("/home")}
         >
-          <span className="text-3xl">📝</span> Todo App
-        </h1>
-        <DarkModeToggle />
-      </div>
-
-      {/* Bottom Row: User Info and Buttons */}
-      <div className="flex items-center justify-center gap-3 p-3 flex-wrap">
-        {/* User Email */}
-        <div className="bg-white bg-opacity-25 px-4 py-2 rounded-lg font-semibold text-sm">
-          👤 {userEmail}
+          <span className="text-3xl">📝</span>
+          <h1 className="text-xl font-bold text-gray-900 dark:text-white">
+            Todo App
+          </h1>
         </div>
 
-        {/* Dashboard Button */}
-        <button
-          onClick={() => navigate("/home")}
-          className="bg-blue-400 hover:bg-blue-300 text-gray-900 font-bold px-5 py-2 rounded-lg text-sm transition transform hover:scale-105 shadow-md"
-        >
-          📊 Dashboard
-        </button>
+        {/* Center: User Email */}
+        <div className="flex-1 flex justify-center">
+          <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
+            👤 {userEmail}
+          </span>
+        </div>
 
-        {/* Profile Button */}
-        <button
-          onClick={() => navigate("/profile")}
-          className="bg-blue-400 hover:bg-blue-300 text-gray-900 font-bold px-5 py-2 rounded-lg text-sm transition transform hover:scale-105 shadow-md"
-        >
-          👤 Profile
-        </button>
+        {/* Right: Buttons and Controls */}
+        <div className="flex items-center gap-3">
+          {/* Dashboard Button */}
+          <button
+            onClick={() => navigate("/home")}
+            className="px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 rounded-lg transition"
+          >
+            📊 Dashboard
+          </button>
 
-        {/* Logout Button */}
-        <button
-          onClick={handleLogout}
-          className="bg-red-500 hover:bg-red-600 text-white font-bold px-5 py-2 rounded-lg text-sm transition transform hover:scale-105 shadow-md"
-        >
-          🚪 Logout
-        </button>
+          {/* Profile Button */}
+          <button
+            onClick={() => navigate("/profile")}
+            className="px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 rounded-lg transition"
+          >
+            👤 Profile
+          </button>
+
+          {/* Logout Button */}
+          <button
+            onClick={handleLogout}
+            className="px-4 py-2 text-sm font-medium text-white bg-red-500 hover:bg-red-600 rounded-lg transition"
+          >
+            🚪 Logout
+          </button>
+
+          {/* Dark Mode Toggle */}
+          <div className="border-l border-gray-200 dark:border-gray-700 pl-3">
+            <DarkModeToggle />
+          </div>
+        </div>
+      </div>
+    </nav>
+  );
       </div>
     </nav>
   );
