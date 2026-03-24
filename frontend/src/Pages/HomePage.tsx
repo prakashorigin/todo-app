@@ -6,7 +6,6 @@ import Sidebar from "../components/Sidebar";
 import TodoItem from "../components/TodoItem";
 import TodoModal from "../components/TodoModal";
 import SearchFilter from "../components/SearchFilter";
-import DarkModeToggle from "../components/DarkModeToggle";
 import { isToday, isPast } from "date-fns";
 
 interface Todo {
@@ -211,18 +210,15 @@ export default function HomePage() {
                   {filteredTodos.length} of {todos.length} tasks
                 </p>
               </div>
-              <div className="flex gap-3">
-                <DarkModeToggle />
-                <button
-                  onClick={() => {
-                    setEditingTodo(null);
-                    setIsModalOpen(true);
-                  }}
-                  className="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 dark:from-blue-600 dark:to-blue-700 dark:hover:from-blue-700 dark:hover:to-blue-800 text-white px-8 py-3 rounded-lg transition font-bold flex items-center gap-2 shadow-lg hover:shadow-xl text-lg"
-                >
-                  <span>➕</span> Add New Task
-                </button>
-              </div>
+              <button
+                onClick={() => {
+                  setEditingTodo(null);
+                  setIsModalOpen(true);
+                }}
+                className="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 dark:from-blue-600 dark:to-blue-700 dark:hover:from-blue-700 dark:hover:to-blue-800 text-white px-8 py-3 rounded-lg transition font-bold flex items-center gap-2 shadow-lg hover:shadow-xl text-lg"
+              >
+                <span>➕</span> Add New Task
+              </button>
             </div>
 
             {/* Search & Filters */}

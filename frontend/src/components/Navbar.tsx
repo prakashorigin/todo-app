@@ -27,39 +27,36 @@ export default function Navbar() {
 
   return (
     <nav className="flex justify-between items-center p-4 bg-gradient-to-r from-blue-600 to-blue-500 text-white shadow-lg dark:from-blue-800 dark:to-blue-700">
-      <div className="flex items-center gap-3">
-        <img
-          src="/Todo-logo.png"
-          alt="Todo Logo"
-          className="h-10 w-10 rounded-full border-2 border-white hover:scale-110 transition cursor-pointer"
-          onClick={() => navigate("/todos")}
-        />
+      {/* Logo and Title */}
+      <div className="flex items-center gap-3 min-w-fit">
         <h1
-          className="text-2xl font-bold cursor-pointer hover:text-blue-100 transition"
-          onClick={() => navigate("/todos")}
+          className="text-2xl font-bold cursor-pointer hover:text-blue-100 transition flex items-center gap-2"
+          onClick={() => navigate("/home")}
         >
-          📝 Todo App
+          <span>📝</span> Todo App
         </h1>
       </div>
-      <div className="flex items-center gap-4">
-        <span className="text-sm font-semibold hidden sm:inline">
+
+      {/* Right Side: User Info and Buttons */}
+      <div className="flex items-center gap-4 justify-end flex-wrap">
+        <span className="text-sm font-semibold px-3 py-2 bg-white bg-opacity-20 rounded-lg min-w-fit">
           👤 {userEmail}
         </span>
         <button
-          onClick={() => navigate("/dashboard")}
-          className="bg-blue-400 hover:bg-blue-300 px-3 py-2 rounded-lg text-xs sm:text-sm font-semibold transition transform hover:scale-105"
+          onClick={() => navigate("/home")}
+          className="bg-blue-400 hover:bg-blue-300 text-gray-900 font-bold px-4 py-2 rounded-lg text-sm transition transform hover:scale-105 whitespace-nowrap"
         >
           📊 Dashboard
         </button>
         <button
           onClick={() => navigate("/profile")}
-          className="bg-blue-400 hover:bg-blue-300 px-3 py-2 rounded-lg text-xs sm:text-sm font-semibold transition transform hover:scale-105"
+          className="bg-blue-400 hover:bg-blue-300 text-gray-900 font-bold px-4 py-2 rounded-lg text-sm transition transform hover:scale-105 whitespace-nowrap"
         >
           👤 Profile
         </button>
         <button
           onClick={handleLogout}
-          className="bg-red-500 hover:bg-red-600 px-3 py-2 rounded-lg text-xs sm:text-sm font-semibold transition transform hover:scale-105"
+          className="bg-red-500 hover:bg-red-600 text-white font-bold px-4 py-2 rounded-lg text-sm transition transform hover:scale-105 whitespace-nowrap"
         >
           🚪 Logout
         </button>
