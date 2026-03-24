@@ -28,9 +28,8 @@ export default function Navbar() {
   return (
     <nav className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 shadow-sm sticky top-0 z-50">
       <div className="flex items-center justify-between px-6 py-4 max-w-7xl mx-auto">
-        
         {/* Left: Logo and Title */}
-        <div 
+        <div
           className="flex items-center gap-3 cursor-pointer hover:opacity-80 transition"
           onClick={() => navigate("/home")}
         >
@@ -78,9 +77,6 @@ export default function Navbar() {
             <DarkModeToggle />
           </div>
         </div>
-      </div>
-    </nav>
-  );
       </div>
     </nav>
   );
