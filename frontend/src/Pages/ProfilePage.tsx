@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "../axiosConfig";
 import { toast } from "react-toastify";
+import Navbar from "../components/Navbar";
 
 export default function ProfilePage() {
   const navigate = useNavigate();
@@ -60,15 +61,7 @@ export default function ProfilePage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
-      <nav className="flex justify-between items-center p-4 bg-gradient-to-r from-blue-600 to-blue-500 text-white shadow-lg">
-        <h1 className="text-2xl font-bold">👤 Profile</h1>
-        <button
-          onClick={() => navigate("/todos")}
-          className="bg-blue-400 hover:bg-blue-500 px-4 py-2 rounded-lg font-semibold transition"
-        >
-          Back to Todos
-        </button>
-      </nav>
+      <Navbar />
 
       <div className="max-w-2xl mx-auto p-6">
         <div className="bg-white p-8 rounded-2xl shadow-lg">

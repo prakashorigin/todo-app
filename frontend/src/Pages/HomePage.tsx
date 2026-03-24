@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "../axiosConfig";
 import { toast } from "react-toastify";
+import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
 import TodoItem from "../components/TodoItem";
 import TodoModal from "../components/TodoModal";
@@ -184,99 +185,105 @@ export default function HomePage() {
   };
 
   return (
-    <div className="flex h-screen bg-gray-50 dark:bg-gray-900">
-      {/* Sidebar */}
-      <Sidebar
-        activeView={activeView}
-        onViewChange={handleViewChange}
-        onProjectSelect={handleProjectSelect}
-      />
+    <div className="flex flex-col h-screen bg-gray-50 dark:bg-gray-900">
+      {/* Navbar */}
+      <Navbar />
 
-      {/* Main Content */}
-      <div className="flex-1 flex flex-col overflow-hidden">
-        {/* Header */}
-        <div className="bg-white dark:bg-gray-800 border-b dark:border-gray-700 shadow-sm p-6">
-          <div className="flex items-center justify-between mb-6">
-            <div>
-              <h2 className="text-4xl font-bold text-gray-800 dark:text-white">
-                {getViewTitle()}
-              </h2>
-              <p className="text-gray-500 dark:text-gray-400 text-sm mt-1">
-                {filteredTodos.length} of {todos.length} tasks
-              </p>
-            </div>
-            <div className="flex gap-3">
-              <DarkModeToggle />
-              <button
-                onClick={() => {
-                  setEditingTodo(null);
-                  setIsModalOpen(true);
-                }}
-                className="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 dark:from-blue-600 dark:to-blue-700 dark:hover:from-blue-700 dark:hover:to-blue-800 text-white px-8 py-3 rounded-lg transition font-bold flex items-center gap-2 shadow-lg hover:shadow-xl text-lg"
-              >
-                <span>➕</span> Add New Task
-              </button>
-            </div>
-          </div>
+      {/* Main Content Area */}
+      <div className="flex flex-1 overflow-hidden">
+        {/* Sidebar */}
+        <Sidebar
+          activeView={activeView}
+          onViewChange={handleViewChange}
+          onProjectSelect={handleProjectSelect}
+        />
 
-          {/* Search & Filters */}
-          <SearchFilter
-            onSearch={setSearch}
-            onFilterPriority={setPriorityFilter}
-            onFilterCategory={setCategoryFilter}
-            onSort={setSort}
-            totalTodos={todos.length}
-          />
-        </div>
-
-        {/* Tasks List */}
-        <div className="flex-1 overflow-y-auto p-6">
-          {loading ? (
-            <div className="flex items-center justify-center h-full">
-              <div className="text-center">
-                <div className="text-4xl mb-2 animate-spin">⏳</div>
-                <p className="text-gray-600 dark:text-gray-400">
-                  Loading tasks...
+        {/* Main Content */}
+        <div className="flex-1 flex flex-col overflow-hidden">
+          {/* Header */}
+          <div className="bg-white dark:bg-gray-800 border-b dark:border-gray-700 shadow-sm p-6">
+            <div className="flex items-center justify-between mb-6">
+              <div>
+                <h2 className="text-4xl font-bold text-gray-800 dark:text-white">
+                  {getViewTitle()}
+                </h2>
+                <p className="text-gray-500 dark:text-gray-400 text-sm mt-1">
+                  {filteredTodos.length} of {todos.length} tasks
                 </p>
               </div>
-            </div>
-          ) : filteredTodos.length > 0 ? (
-            <div className="space-y-3 max-w-5xl">
-              {filteredTodos.map((todo) => (
-                <TodoItem
-                  key={todo._id}
-                  todo={todo}
-                  onEdit={handleEditTodo}
-                  onDelete={deleteTodo}
-                  onToggle={toggleComplete}
-                />
-              ))}
-            </div>
-          ) : (
-            <div className="flex flex-col items-center justify-center h-full">
-              <div className="text-6xl mb-4">
-                {activeView === "completed" ? "✅" : "📭"}
-              </div>
-              <p className="text-gray-600 dark:text-gray-400 text-lg mb-2">
-                {search
-                  ? "No tasks match your search"
-                  : activeView === "completed"
-                    ? "No completed tasks yet"
-                    : "No tasks here. Add one to get started!"}
-              </p>
-              {!search && activeView !== "completed" && (
+              <div className="flex gap-3">
+                <DarkModeToggle />
                 <button
                   onClick={() => {
                     setEditingTodo(null);
                     setIsModalOpen(true);
                   }}
-                  className="mt-6 px-8 py-3 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white rounded-lg transition font-bold shadow-lg hover:shadow-xl text-lg flex items-center gap-2"
+                  className="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 dark:from-blue-600 dark:to-blue-700 dark:hover:from-blue-700 dark:hover:to-blue-800 text-white px-8 py-3 rounded-lg transition font-bold flex items-center gap-2 shadow-lg hover:shadow-xl text-lg"
                 >
-                  ➕ Create New Task
+                  <span>➕</span> Add New Task
                 </button>
-              )}
+              </div>
             </div>
-          )}
+
+            {/* Search & Filters */}
+            <SearchFilter
+              onSearch={setSearch}
+              onFilterPriority={setPriorityFilter}
+              onFilterCategory={setCategoryFilter}
+              onSort={setSort}
+              totalTodos={todos.length}
+            />
+          </div>
+
+          {/* Tasks List */}
+          <div className="flex-1 overflow-y-auto p-6">
+            {loading ? (
+              <div className="flex items-center justify-center h-full">
+                <div className="text-center">
+                  <div className="text-4xl mb-2 animate-spin">⏳</div>
+                  <p className="text-gray-600 dark:text-gray-400">
+                    Loading tasks...
+                  </p>
+                </div>
+              </div>
+            ) : filteredTodos.length > 0 ? (
+              <div className="space-y-3 max-w-5xl">
+                {filteredTodos.map((todo) => (
+                  <TodoItem
+                    key={todo._id}
+                    todo={todo}
+                    onEdit={handleEditTodo}
+                    onDelete={deleteTodo}
+                    onToggle={toggleComplete}
+                  />
+                ))}
+              </div>
+            ) : (
+              <div className="flex flex-col items-center justify-center h-full">
+                <div className="text-6xl mb-4">
+                  {activeView === "completed" ? "✅" : "📭"}
+                </div>
+                <p className="text-gray-600 dark:text-gray-400 text-lg mb-2">
+                  {search
+                    ? "No tasks match your search"
+                    : activeView === "completed"
+                      ? "No completed tasks yet"
+                      : "No tasks here. Add one to get started!"}
+                </p>
+                {!search && activeView !== "completed" && (
+                  <button
+                    onClick={() => {
+                      setEditingTodo(null);
+                      setIsModalOpen(true);
+                    }}
+                    className="mt-6 px-8 py-3 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white rounded-lg transition font-bold shadow-lg hover:shadow-xl text-lg flex items-center gap-2"
+                  >
+                    ➕ Create New Task
+                  </button>
+                )}
+              </div>
+            )}
+          </div>
         </div>
       </div>
 
