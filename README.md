@@ -33,7 +33,7 @@ cd frontend
 npm install
 npm start
 
-Frontend runs on http://localhost:3000.
+Frontend runs on http://localhost:4002.
 
 Project Structure
 backend/
