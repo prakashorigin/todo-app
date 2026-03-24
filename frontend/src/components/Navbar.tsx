@@ -41,7 +41,7 @@ export default function Navbar() {
 
         {/* Center: User Email */}
         <div className="flex-1 flex justify-center">
-          <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
+          <span className="text-sm font-bold text-gray-900 dark:text-white bg-gray-100 dark:bg-gray-700 px-4 py-2 rounded-lg">
             👤 {userEmail}
           </span>
         </div>
@@ -51,7 +51,7 @@ export default function Navbar() {
           {/* Dashboard Button */}
           <button
             onClick={() => navigate("/home")}
-            className="px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 rounded-lg transition"
+            className="px-4 py-2 text-sm font-bold text-gray-900 dark:text-white bg-blue-100 dark:bg-blue-800 hover:bg-blue-200 dark:hover:bg-blue-700 rounded-lg transition"
           >
             📊 Dashboard
           </button>
@@ -59,7 +59,7 @@ export default function Navbar() {
           {/* Profile Button */}
           <button
             onClick={() => navigate("/profile")}
-            className="px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 rounded-lg transition"
+            className="px-4 py-2 text-sm font-bold text-gray-900 dark:text-white bg-blue-100 dark:bg-blue-800 hover:bg-blue-200 dark:hover:bg-blue-700 rounded-lg transition"
           >
             👤 Profile
           </button>

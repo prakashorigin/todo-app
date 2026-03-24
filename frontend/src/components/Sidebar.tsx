@@ -92,10 +92,10 @@ export default function Sidebar({
           <button
             key={item.id}
             onClick={() => onViewChange(item.id)}
-            className={`w-full text-left px-4 py-3 rounded-lg flex items-center gap-3 transition font-medium ${
+            className={`w-full text-left px-4 py-3 rounded-lg flex items-center gap-3 transition font-bold ${
               activeView === item.id
-                ? "bg-blue-50 dark:bg-blue-900 text-blue-600 dark:text-blue-400"
-                : "text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700"
+                ? "bg-blue-50 dark:bg-blue-900 text-blue-700 dark:text-blue-300"
+                : "text-gray-900 dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-700"
             }`}
           >
             <span className="text-xl">{item.icon}</span>
@@ -106,7 +106,7 @@ export default function Sidebar({
         {/* Projects Section */}
         <div className="pt-4 mt-4 border-t border-gray-200 dark:border-gray-700">
           <div className="flex items-center justify-between px-4 mb-3">
-            <h3 className="font-semibold text-gray-700 dark:text-gray-300 text-xs uppercase tracking-wide">
+            <h3 className="font-bold text-gray-900 dark:text-gray-100 text-xs uppercase tracking-wide">
               Projects
             </h3>
             <button
@@ -161,24 +161,24 @@ export default function Sidebar({
                   <span className="text-lg">{project.icon}</span>
                   <button
                     onClick={() => onProjectSelect?.(project._id)}
-                    className={`flex-1 text-left text-sm transition ${
+                    className={`flex-1 text-left text-sm transition font-bold ${
                       activeView === project._id
-                        ? "text-blue-600 dark:text-blue-400 font-semibold"
-                        : "text-gray-700 dark:text-gray-300"
+                        ? "text-blue-700 dark:text-blue-300 font-bold"
+                        : "text-gray-900 dark:text-gray-100"
                     }`}
                   >
                     {project.name}
                   </button>
                   <button
                     onClick={() => handleDeleteProject(project._id)}
-                    className="opacity-0 group-hover:opacity-100 text-gray-400 hover:text-red-500 text-sm transition"
+                    className="opacity-0 group-hover:opacity-100 text-gray-500 hover:text-red-500 text-sm transition font-bold"
                   >
                     ✕
                   </button>
                 </div>
               ))
             ) : (
-              <p className="text-xs text-gray-500 dark:text-gray-400 px-4 py-2">
+              <p className="text-xs text-gray-900 dark:text-gray-100 px-4 py-2">
                 No projects yet
               </p>
             )}
