@@ -1,6 +1,5 @@
 Advanced Todo App - Production Ready
-
-A Todoist-like task management app built with React, Node.js, MongoDB, and TypeScript. Full-featured with authentication, dark mode, project organization, and smart filtering.
+Built with React, Node.js, MongoDB, and TypeScript. Full-featured with authentication, dark mode, project organization, and smart filtering.
 
 Features
 Authentication: JWT-based secure login/register
@@ -12,14 +11,7 @@ Due Dates: Smart formatting (Today/Tomorrow/Overdue)
 Responsive Design: Desktop, tablet, mobile ready
 Notifications: Toast messages for actions
 Quick Start
-Backend
-Create .env in backend/:
-MONGO_URI=mongodb://localhost:27017/todo-app
-JWT_SECRET=your_secret_key
-PORT=6002
-NODE_ENV=development
-Start MongoDB:
-mongod
+
 Install dependencies and run backend:
 cd backend
 npm install
@@ -50,11 +42,6 @@ frontend/
 │   ├── App.tsx        # Routes
 │   └── axiosConfig.ts
 API Endpoints
-
-Auth
-
-POST /api/auth/register - Register user
-POST /api/auth/login - Login user
 
 Todos (Requires Auth)
 
@@ -92,16 +79,3 @@ Database Schemas
 User: _id, email, password, createdAt
 Todo: _id, user, project, title, description, completed, priority, category, dueDate, tags, createdAt, updatedAt
 Project: _id, user, name, color, icon, createdAt
-
-Deployment
-Backend: Heroku, AWS, DigitalOcean, Railway
-Frontend: Vercel, Netlify
-Database: MongoDB Atlas
-Use .env for secrets
-Next Steps
-Test all features
-Create multiple projects
-Try filters, search, dark mode
-Advanced: Recurring tasks, drag-and-drop, notifications, collaboration, mobile app
-
-Happy Task Management!
